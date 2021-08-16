@@ -47,9 +47,9 @@ module.exports = function toReadable (number) {
 
         if(typeof(number) == "undefined") return;
 
-        if (number >= 0 && number <=20) {
+        if (number >= 0 && number <=20) { // числа от 0 включительно до 20
             return test.getKeyByValue( number );
-        } else if (number > 20 && number <=90) {
+        } else if (number > 20 && number < 100) { // числа от 21 до 99 
 
             let slicedFirstNum = Number((number).toString().slice(0, 1)); // если входит число "20", забираем первое число (2)
             let decFirstNum = Number(slicedFirstNum + '0'); // делаем первое число из 2 в 20
@@ -59,17 +59,38 @@ module.exports = function toReadable (number) {
             let secNum = test.getKeyByValue( slicedSecNum ); // кидаем число в функцию и получаем второе число (на английском)
 
             return firstNum + ' ' + secNum; // связываем два полученых числа вместе
-        }
+        } 
 }
 
 
-        // if(number % 100 >= 11 && number % 100 <= 13)
-        //       return num + "th";
-              
-        //       switch(num % 10) {
-        //           case 1: return num + "st";
-        //           case 2: return num + "nd";
-        //           case 3: return num + "rd";
-        //       }
-        //       return num + "th";
-        //   }
+/* 
+
+else if (number >= 100 && number < 1000) { // числа от 100 включительно и до 999
+
+    let slicedFirstHun = Number((number).toString().slice(0, 1)); // если входит число "100", забираем первое число (1)
+    let firstNumHun = test.getKeyByValue( slicedFirstHun ); // достаем из функции прописную первую сотню (284 - "two" и тд)
+    let decFirstHun = Number(slicedFirstHun + '00'); // делаем первое число из 1 в 100
+    let firstHun = test.getKeyByValue( decFirstHun ); // кидаем число в функцию и получаем "сто" (на английском)
+
+
+    let slicedSecHun = Number((number).toString().slice(1,2)); // если входит число "123", забираем второе число (2)
+    if (slicedSecHun = 0) { // если второе число (204) равно 0, то получаем пустую строку
+        let secHunZero = "";
+        return decSecHun = secHunZero; // сюда вернули пустую строку
+    } else if (slicedSecHun != 0) { // если у нас таки не ноль, то типа делаем из 220 например 20, закидаем в функцию и такие получаем "двадцать"
+        let decSecHun = Number(slicedSecHun + '0'); // делаем первое число из 2 в 20
+        return secHun = test.getKeyByValue( decSecHun ); // кидаем число в функцию и получаем второе число (на английском)
+    }             
+
+    let slicedThirdHun = Number((number).toString().slice(2)); // если входит число "123", забираем третье число (3)
+    console.log(slicedThirdHun)
+    if (slicedThirdHun != 0) {
+        return thirdHun = test.getKeyByValue( slicedThirdHun ); // кидаем число в функцию и получаем третье число (на английском)
+    } else {
+        return thirdHun = ""; // типа если третье число - ноль, то ничего (дальше, по идее, должен пройти только варик с предыдущего этапа, то есть 120 - одна сотня двадцать)
+    }
+
+
+    return firstNumHun + ' ' + firstHun + ' ' + secHun + " " + thirdHun; // связываем три полученых числа вместе
+}
+*/
