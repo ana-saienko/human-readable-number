@@ -57,6 +57,7 @@ module.exports = function toReadable (number) {
 
             let slicedSecNum = Number((number).toString().slice(1)); // если входит число "20", забираем второе число (0)
             let secNum = test.getKeyByValue( slicedSecNum ); // кидаем число в функцию и получаем второе число (на английском)
+             // и я только что поняла, что у меня возвращает "thirty zero", а не надо этот второй ноль. не получается добавить проверку, чтобы если ноль, не возвращало ничего...
 
             return firstNum + ' ' + secNum; // связываем два полученых числа вместе
         } 
