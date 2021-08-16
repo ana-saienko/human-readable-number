@@ -1,6 +1,6 @@
 module.exports = function toReadable (number) {
 
-        let result;
+        // let result;
 
         Object.prototype.getKeyByValue = function( value ) {
             for( var prop in this ) {
@@ -50,9 +50,15 @@ module.exports = function toReadable (number) {
         if (number >= 0 && number <=20) {
             return test.getKeyByValue( number );
         } else if (number > 20 && number <=90) {
-            let num = test.getKeyByValue( number );
-            let slicedNum = parseInt(num.toString().slice(0, -1).concat('0'));
-            return result = num + " three";
+
+            let slicedFirstNum = Number((number).toString().slice(0, 1)); // если входит число "20", забираем первое число (2)
+            let decFirstNum = Number(slicedFirstNum + '0'); // делаем первое число из 2 в 20
+            let firstNum = test.getKeyByValue( decFirstNum ); // кидаем число в функцию и получаем "двадцать" (на английском)
+
+            let slicedSecNum = Number((number).toString().slice(1)); // если входит число "20", забираем второе число (0)
+            let secNum = test.getKeyByValue( slicedSecNum ); // кидаем число в функцию и получаем второе число (на английском)
+
+            return firstNum + ' ' + secNum; // связываем два полученых числа вместе
         }
 }
 
